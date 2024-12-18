@@ -60,3 +60,30 @@ def test_fire_teacher(teacher):
     assert len(Teacher.teacher_dict) == 0
 
 
+def test_discipline_teacher_init(discipline_teacher):
+    assert len(DisciplineTeacher.discipline_teacher_dict) == 1
+    assert DisciplineTeacher.discipline_teacher_dict == {'new_name': ['test_discipline', 'test_job_title']}
+
+
+def test_get_discipline(discipline_teacher):
+    assert discipline_teacher.get_discipline() == 'test_discipline'
+
+
+def test_get_job_title(discipline_teacher):
+    assert discipline_teacher.get_job_title() == 'test_job_title'
+
+
+def test_get_discipline_teacher_data(discipline_teacher):
+    assert discipline_teacher.get_teacher_data() == 'Имя: new_name. Образование: new_education. Опыт работы: 66 (года/лет)\nПредмет test_discipline. Должность test_job_title'
+
+def test_set_job_title(discipline_teacher):
+    assert discipline_teacher.set_job_title('new_job_title') == 'new_job_title'
+
+def test_give_consultation(discipline_teacher):
+    assert discipline_teacher.give_a_consultation('TEST') == 'new_name провел консультацию в классе TEST\nПо предмету test_discipline как test_job_title'
+
+
+def test_fire_discipline_teacher(discipline_teacher):
+    assert discipline_teacher.fire_discipline_teacher() == 'Учитель new_name по дисциплине test_discipline  был уволен'
+    assert discipline_teacher.fire_discipline_teacher() == 'Учителя new_name по дисциплине test_discipline уже уволили'
+    assert DisciplineTeacher.discipline_teacher_dict == {}
