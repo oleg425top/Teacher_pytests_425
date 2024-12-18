@@ -1,6 +1,6 @@
 import pytest
 
-from teacher_pytests.class_teacher import Teacher, DisciplineTeacher
+from class_teacher import Teacher, DisciplineTeacher
 
 @pytest.fixture()
 def teacher():

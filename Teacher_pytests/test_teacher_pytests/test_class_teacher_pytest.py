@@ -1,4 +1,4 @@
-from teacher_pytests.class_teacher import Teacher, DisciplineTeacher
+from class_teacher import Teacher, DisciplineTeacher
 
 '''без использования фикстуры'''
 
@@ -76,11 +76,22 @@ def test_get_job_title(discipline_teacher):
 def test_get_discipline_teacher_data(discipline_teacher):
     assert discipline_teacher.get_teacher_data() == 'Имя: new_name. Образование: new_education. Опыт работы: 66 (года/лет)\nПредмет test_discipline. Должность test_job_title'
 
+
 def test_set_job_title(discipline_teacher):
     assert discipline_teacher.set_job_title('new_job_title') == 'new_job_title'
 
+
+def test_discipline_teacher_add_mark(discipline_teacher):
+    assert discipline_teacher.add_mark('Vasya', 5) == 'new_name, поставил оценку 5 студенту Vasya\nПредмет test_discipline'
+
+
+def test_discipline_teacher_remove_mark(discipline_teacher):
+    assert discipline_teacher.remove_mark('Vasya', 5) == 'new_name, удалил оценку 5 студенту Vasya\nПредмет test_discipline'
+
+
 def test_give_consultation(discipline_teacher):
-    assert discipline_teacher.give_a_consultation('TEST') == 'new_name провел консультацию в классе TEST\nПо предмету test_discipline как test_job_title'
+    assert discipline_teacher.give_a_consultation(
+        'TEST') == 'new_name провел консультацию в классе TEST\nПо предмету test_discipline как test_job_title'
 
 
 def test_fire_discipline_teacher(discipline_teacher):
